@@ -1,0 +1,62 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1><center>Triangle</center></h1>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <form class="form-inline" id="input">
+                    <div class="form-group">
+                        <label for="A">A</label>
+                        <input type="number" class="form-control" id="A" name="A" placeholder="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="B">B</label>
+                        <input type="number" class="form-control" id="B" name="B" placeholder="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="C">C</label>
+                        <input type="number" class="form-control" id="C" name="C" placeholder="" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <hr>
+        <center><h2 id="answer"></h2></center>
+        <hr>
+        <center><h3 id="path"></h3></center>
+    </div>
+    <script src="lib/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript">
+            $( "#input" ).submit(function( event ) {
+                $.ajax({
+                    method: "POST",
+                    url: "runTriangle.php",
+                    dataType: "json",
+                    data: { A: $("#A").val(), B: $("#B").val(), C: $("#C").val() }
+                }).done(function (data) {
+                    $("#answer").text(data.answer);
+                    $("#path").text(data.path);
+                }).fail(function(data) {
+                    console.log(data);
+                });
+          event.preventDefault();
+        });
+    </script>
+</body>
+
+</html>

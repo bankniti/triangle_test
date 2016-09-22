@@ -1,0 +1,4 @@
+# local ignore
+Dockerfile
+Triangle.php
+TriangleTest.php
