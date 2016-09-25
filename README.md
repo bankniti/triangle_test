@@ -12,8 +12,8 @@ Deployment
 ------------
 
 For the 1st time Run these commands in where Dockerfile located:
-- `docker run -p 80:80 -d -v $PWD:/var/www/html -it --name my-webserver php:5.6-apache`
-[ $PWD is current directory where project is located ]
+- `docker run -p 80:80 -d -v [project_location]:/var/www/html -it --name my-webserver php:5.6-apache`
+
 [ For another time in case docker container already created `docker start my-webserver` ]
 
 For enter terminal
