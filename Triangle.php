@@ -17,30 +17,38 @@ class triangle {
         $A = $this->a_side;
         $B = $this->b_side;
         $C = $this->c_side;
+        $path = array();
+        array_push($path, '1');
 
+        array_push($path, '2');
         $checkInteger = $this->checkInteger($A, $B, $C);
         if ($checkInteger['is_integer'] === false){
+            array_push($path, '3');
             $answer = array(
-                'path' => array(),
-                'answer'=> 'Not a numeric value',
+                'path' => $path,
+                'answer'=> 'Not an integer',
                 'invalid_input' => $checkInteger['invalid_input'],
             );
             return $answer;
         }
 
+        array_push($path, '4');
         $checkOutOfRange = $this->checkOutOfRange($A, $B, $C);
         if ($checkOutOfRange['is_out_of_range'] === true){
+            array_push($path, '5');
             $answer = array(
-                'path' => array(),
+                'path' => $path,
                 'answer'=> 'Out of range',
                 'invalid_input' => $checkOutOfRange['invalid_input'],
             );
             return $answer;
         }
 
+        array_push($path, '6');
         if ($this->checkTriangle($A, $B, $C) === false){
+            array_push($path, '7');
             $answer = array(
-                'path' => array(),
+                'path' => $path,
                 'answer'=> 'Not a triangle',
             );
 
@@ -48,27 +56,32 @@ class triangle {
          *  Process a valid triangle
         **/
         }else{
-
+            array_push($path, '8');
             if (($A == $B) && ($B == $C)){
+                array_push($path, '9');
                 $answer = array(
-                    'path' => array(),
+                    'path' => $path,
                     'answer'=> 'Equilateral',
                 );
             }else{
 
+                array_push($path, '10');
                 if (($A != $B) && ($A != $C) && ($B != $C)){
+                    array_push($path, '11');
                     $answer = array(
-                        'path' => array(),
+                        'path' => $path,
                         'answer'=> 'Scalene',
                     );
                 }else{
+                    array_push($path, '12');
                     $answer = array(
-                        'path' => array(),
+                        'path' => $path,
                         'answer'=> 'Isosceles',
                     );
                 }
             }
         }
+        array_push($path, '13');
         return $answer;
     }
 
