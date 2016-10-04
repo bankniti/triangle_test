@@ -20,15 +20,15 @@
                 <form class="form-inline" id="input">
                     <div class="form-group">
                         <label for="A">A</label>
-                        <input type="number" class="form-control" id="A" name="A" placeholder="" required>
+                        <input type="" class="form-control" id="A" name="A" placeholder="" >
                     </div>
                     <div class="form-group">
                         <label for="B">B</label>
-                        <input type="number" class="form-control" id="B" name="B" placeholder="" required>
+                        <input type="" class="form-control" id="B" name="B" placeholder="" >
                     </div>
                     <div class="form-group">
                         <label for="C">C</label>
-                        <input type="number" class="form-control" id="C" name="C" placeholder="" required>
+                        <input type="" class="form-control" id="C" name="C" placeholder="" >
                     </div>
                     <button type="submit" class="btn btn-primary">Send</button>
                 </form>
@@ -45,13 +45,23 @@
             $( "#input" ).submit(function( event ) {
                 $.ajax({
                     method: "POST",
-                    url: "runTriangle.php",
+                    url: "runtriangle.php",
                     dataType: "json",
                     data: { A: $("#A").val(), B: $("#B").val(), C: $("#C").val() }
                 }).done(function (data) {
                     $("#answer").text(data.answer);
                     $("#path").text(data.path);
+                    document.getElementById("A").style.color = "black";
+                    document.getElementById("B").style.color = "black";
+                    document.getElementById("C").style.color = "black";
+                    if (typeof(data.invalid_input) !== 'undefined'){
+                        for (i=0; i<data.invalid_input.length; i++){
+                            document.getElementById(data.invalid_input[i]).style.color = "red";
+                        }
+                    }
+                    console.log(data);
                 }).fail(function(data) {
+                    console.log('fail');
                     console.log(data);
                 });
           event.preventDefault();
