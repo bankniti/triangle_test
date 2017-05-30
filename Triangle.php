@@ -85,7 +85,7 @@ class triangle {
         return $answer;
     }
 
-    private function checkInteger($a, $b, $c)
+    public function checkInteger($a, $b, $c)
     {
         $isInteger = true;
         $invalid = array();
@@ -111,7 +111,7 @@ class triangle {
         );
     }
 
-    private function checkOutOfRange($a, $b, $c)
+    public function checkOutOfRange($a, $b, $c)
     {
         $isOutOfRange = false;
         $invalid = array();
@@ -137,7 +137,7 @@ class triangle {
         );
     }
 
-    private function checkTriangle($a, $b, $c)
+    public function checkTriangle($a, $b, $c)
     {
         return (($a < $b + $c) && ($b < $a + $c) && ($c < $a + $b)) ? true : false;
     }

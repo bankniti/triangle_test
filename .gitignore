@@ -1,5 +1,5 @@
 # local ignore
 Dockerfile
 triangle1.php
-TriangleTest.php
 Triangle2.php
+.idea/
